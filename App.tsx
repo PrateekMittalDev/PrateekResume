@@ -82,17 +82,17 @@ function App(): JSX.Element {
         educations: [
           {
             standard: 'X',
-            year: '2017',
+            year: '2016 - 2017',
             marks: '9.2 CGPA',
           },
           {
             standard: 'XII',
-            year: '2019',
+            year: '2018 - 2019',
             marks: '89%',
           },
           {
-            standard: 'B.tech',
-            year: '2023',
+            standard: 'B.tech (Information Technology)',
+            year: '2019 - 2023',
             marks: '9.032 CGPA',
           },
         ],

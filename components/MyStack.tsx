@@ -1,9 +1,9 @@
 import React from 'react';
 import Resume from './Resume';
-import {Easing, Animated} from 'react-native';
+// import {Easing, Animated} from 'react-native';
 import EditResume from './EditFiles/EditResume';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {TransitionPresets} from 'react-navigation-stack';
+// import {TransitionPresets} from 'react-navigation-stack';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,7 +13,7 @@ function MyStack() {
       initialRouteName={'Resume'}
       screenOptions={{
         headerShown: true,
-        headerStyle: {backgroundColor: 'blue'},
+        headerStyle: {backgroundColor: 'grey'},
         // headerBackground: () => {
         //   <Animated.View
         //     // eslint-disable-next-line react-native/no-inline-styles

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {IUser} from './interfaces';
+// import {Constants} from './constants';
 // import StyledText from './Styledtext';
 
 function Introduction(): JSX.Element {
@@ -39,6 +40,7 @@ const styles = StyleSheet.create({
     // marginLeft: '11%',
     marginLeft: 'auto',
     marginRight: 'auto',
+    // marginLeft: Constants.deviceWidth * 0.1,
     width: '80%',
   },
 

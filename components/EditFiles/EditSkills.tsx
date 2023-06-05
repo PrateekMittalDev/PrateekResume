@@ -1,6 +1,14 @@
 import React from 'react';
-import {Image, StyleSheet, Text, TextInput, View} from 'react-native';
+import {
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import {IUser} from '../interfaces';
+import {launchImageLibrary} from 'react-native-image-picker';
 
 type Props = {
   user: IUser | undefined;
@@ -23,10 +31,34 @@ function EditSkills({user, handleChange}: Props) {
         return prevUser;
       }
       const updatedSkills = [...prevUser.skills];
-      updatedSkills[index].source = value;
+      const updatedSkill = {...prevUser.skills[index], source: value}; // New line added
+      // updatedSkills[index].source = value;
+      updatedSkills[index] = updatedSkill;
       return {...prevUser, skills: updatedSkills};
     });
   };
+
+  function imagePicker(index: number) {
+    const options = {
+      mediaType: 'photo' as const,
+      maxWidth: 500,
+      maxHeight: 500,
+      includedBase64: true,
+    };
+
+    launchImageLibrary(options, response => {
+      console.log('Response = ', response);
+      if (response.didCancel) {
+        console.log('User Cancelled image picker');
+      } else if (response.errorMessage) {
+        console.log('ImagePicker Error:', response.errorMessage);
+      } else {
+        const {assets} = response;
+        const uri = assets && assets.length > 0 ? assets[0].uri : '';
+        updateSource(uri || '', index);
+      }
+    });
+  }
 
   return (
     <View style={styles.container}>
@@ -49,6 +81,13 @@ function EditSkills({user, handleChange}: Props) {
             value={value.source}
             placeholder={value.source}
           />
+          <Pressable
+            onPress={() => {
+              imagePicker(index);
+            }}
+            style={styles.addImageBtn}>
+            <Text style={styles.buttonText}>Pick an Image</Text>
+          </Pressable>
         </View>
       ))}
     </View>
@@ -90,16 +129,17 @@ const styles = StyleSheet.create({
     marginLeft: '10%',
     color: 'black',
   },
-  saveButton: {
-    height: 35,
+  addImageBtn: {
+    height: 40,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#f4dfe0',
+    backgroundColor: '#332f2f',
     width: '80%',
+    marginTop: 20,
     marginLeft: '10%',
   },
   buttonText: {
-    color: 'black',
+    color: 'white',
   },
 });
 

@@ -3,6 +3,7 @@ import {StyleSheet, Text, View, FlatList} from 'react-native';
 import Skill from './Skill';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {IUser} from './interfaces';
+// import {Constants} from './constants';
 
 function Skills(): JSX.Element {
   const [user, setUser] = useState<IUser | null>(null);
@@ -29,6 +30,7 @@ function Skills(): JSX.Element {
       <View style={styles.innerContainer}>
         <Text style={styles.heading}>Skills</Text>
         <FlatList
+          style={styles.listContainer}
           data={user?.skills}
           renderItem={({item}) => (
             <Skill name={item.skill} link={item.source} />
@@ -49,15 +51,20 @@ const styles = StyleSheet.create({
     // marginLeft: '10%',
     marginLeft: 'auto',
     marginRight: 'auto',
-    width: '80%',
+    // marginLeft: Constants.deviceWidth * 0.1,
+    // width: '80%',
   },
 
   heading: {
     color: 'black',
     fontWeight: '500',
     fontSize: 17,
-    marginLeft: 7,
+    // marginLeft: 7,
     marginBottom: 30,
+  },
+
+  listContainer: {
+    marginLeft: -5,
   },
 });
 

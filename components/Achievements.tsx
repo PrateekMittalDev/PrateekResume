@@ -3,6 +3,7 @@ import {FlatList, StyleSheet, Text, View} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {IUser} from './interfaces';
 import Achievement from './Achievement';
+// import {Constants} from './constants';
 
 function Achievements(): JSX.Element {
   const [user, setUser] = useState<IUser | null>(null);
@@ -41,15 +42,19 @@ function Achievements(): JSX.Element {
 const styles = StyleSheet.create({
   container: {
     marginTop: '9%',
-    marginLeft: '10%',
-    width: '80%',
+    // marginLeft: '10%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    // width: '80%',
+    // marginLeft: Constants.deviceWidth * 0.1,
+    marginBottom: '9%',
   },
 
   heading: {
     color: 'black',
     fontWeight: '500',
     fontSize: 17,
-    marginLeft: 7,
+    // marginLeft: 7,
     marginBottom: 30,
   },
 });

@@ -3,6 +3,7 @@ import {FlatList, StyleSheet, Text, View} from 'react-native';
 import Experience from './Experience';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {IUser} from './interfaces';
+// import {Constants} from './constants';
 
 function Experiences(): JSX.Element {
   const [user, setUser] = useState<IUser | null>(null);
@@ -63,15 +64,18 @@ function Experiences(): JSX.Element {
 const styles = StyleSheet.create({
   Experiences: {
     marginTop: '9%',
-    marginLeft: '10%',
-    width: '80%',
+    // marginLeft: '10%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    // width: '80%',
+    // marginLeft: Constants.deviceWidth * 0.1,
   },
 
   heading: {
     color: 'black',
     fontWeight: '500',
     fontSize: 17,
-    marginLeft: 7,
+    // marginLeft: 7,
     marginBottom: 30,
   },
 });
